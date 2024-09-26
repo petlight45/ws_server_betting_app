@@ -9,6 +9,15 @@ services:
     env_file:
       - .env
     ports:
-      - 5002:5000
+      - 5001:5000
     volumes:
-      - ../logs/taskman/ws_server/:/app/logs
+      - ../logs/betting-app/ws_server/:/app/logs
+    environment:
+      WAIT_HOSTS: redis:6379
+      WAIT_TIMEOUT: 60
+  redis:
+    image: 'redis'
+    volumes:
+      - ../redis-data-betting-app:/data
+      - ../redis-betting-app/:/etc/redis/
+    restart: "on-failure"

@@ -23,7 +23,7 @@ export default class LeaderboardItem {
         this.totalProfits = params.totalProfits
     }
 
-    get data(): Partial<TaskParams> {
+    get data(): Partial<LeaderboardItemParams> {
         return ObjectsHelpers.extractAttributesToData(this)
     }
 }

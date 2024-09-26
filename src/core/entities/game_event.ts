@@ -1,11 +1,10 @@
 import {ObjectsHelpers} from "./helpers";
-import {GameEventTeamEnum, GameEventTypeEnum} from "../../../../http_server/src/core/game/event/enums";
 
 
 export type GameEventParams = {
     _id?: string;
-    type: GameEventTypeEnum;
-    team: GameEventTeamEnum;
+    type: string;
+    team: string;
     gameId: string;
     player: string;
     minute: number;
