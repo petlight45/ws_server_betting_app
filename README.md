@@ -1,13 +1,12 @@
-# Task Management Project
+# Betting APP Project
 
-This project is a Node.js Socket.io server built with Express and TypeScript, following Hexagonal Architecture and using Awilix for Dependency Injection. It employs RabbitMQ as a message broker for asynchronous communication with a HTTP service and  Jest for unit testing.
+This project is a Node.js Socket.io server built with Express and TypeScript, following Hexagonal Architecture and using Awilix for Dependency Injection. It employs BullMQ as a message broker for asynchronous communication with a HTTP service and background job execution.
 
 ## Features
 
 - **Hexagonal Architecture**: Organized code into distinct layers for better maintainability and scalability.
 - **Awilix**: Dependency Injection container for managing application dependencies.
 - **RabbitMQ**: Message broker for asynchronous communication with HTTP service.
-- **Jest**: Testing framework for unit testing.
 - **Winston & Morgan**: Extensive Logging
 
 
@@ -16,7 +15,6 @@ This project is a Node.js Socket.io server built with Express and TypeScript, fo
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Running the Server](#running-the-server)
-- [Testing](#testing)
 - [Events Documentation](#events-documentation)
 
 ## Installation
@@ -25,16 +23,23 @@ To get started with this project, follow these steps:
 
 1. **Clone the Repository**
 
-   ```bash
-   https://github.com/petlight45/task-management-backend-ws.git
-   cd task-management-backend-ws
-   
+```
+git clone https://github.com/petlight45/ws_server_betting_app.git
+```
+
+
+2. **Change directory 
+```
+cd ws_server_betting_app
+```   
 ## Configuration
    
-1. **Set up environmental variables**
+  
+3. **Set up environmental variables**
 
    ```bash
    cp .env.example .env
+   ```
  Update the .env file with your local configuration values.
  
  
@@ -44,48 +49,31 @@ To get started with this project, follow these steps:
 
  EXPRESS_APP_HTTP_SERVER_BASE_URL=The base endpoint url of the HTTP server
 
- EXPRESS_APP_RABBIT_MQ_URL= The connection uri to the message queue(Rabbit MQ) used by this server for asynchronous inter-service communication with the HTTP server 
+ EXPRESS_APP_REDIS_URL= The connection uri to the message queue(Rabbit MQ) used by this server for asynchronous inter-service communication with the Websocket server 
  
- EXPRESS_APP_MESSAGE_QUEUE_NAME=The queue name that binds this server and the HTTP server together, this server sends to this queue, while the WS server reads from it
+ EXPRESS_APP_MESSAGE_QUEUE_NAME_WEBSOCKET_SERVICE=The queue name that binds this server and the websocket server together, this server sends to this queue, while the WS server consumes from it
 
  
+
  ## Running the Server
  
  To run the server:
  
  Install docker and docker compose on your operating environment
  
- Run this
+ For linux, Windows or Old Mac run
  
-    ```bash
+    ```
     docker-compose up --build
+    ```
     
-Or this, in case the above did not work
+For newer Mac
 
-      ```bash
+      ```
       docker compose up --build
-
-## Testing
- 
- To run the unit tests and integration tests:
- 
- Run this
- 
-    ```bash
-    npm install
-    npm test
     
-    
-## Events Documentation
- Events  to listen for; 
+## Postman Documentation
  
-      ```bash
-      notification
-
-
-  Sample payload 
-  
-       ```bash
-       {"type":"TASK_CREATED","data":{"id":"c0f8ac3f5611137a7cffbe9a","_id":"c0f8ac3f5611137a7cffbe9a","name":"tabula demum absens","assigneeId":"0550f7dbccb2cb02bddbbc2f","dueDate":"Fri Sep 27 2024 05:48:39 GMT+0100 (West Africa Standard
-        Time)","state":"contra","description":"Coadunatio coepi vesco torrens. Delicate statua defendo comptus. Substantia vos vorax cras sit quibusdam depromo volaticus.","ownerId":"0550f7dbccb2cb02bddbbc2f","data":{"id":"c0f8ac3f5611137a7cffbe9a","_id":"c0f8ac3f5611137a7cffbe9a","name":"tabula demum absens","assignee
-       Id":"0550f7dbccb2cb02bddbbc2f","dueDate":"Fri Sep 27 2024 05:48:39 GMT+0100 (West Africa Standard Time)","state":"contra","description":"Coadunatio coepi vesco torrens. Delicate statua defendo comptus. Substantia vos vorax cras sit quibusdam depromo volaticus.","ownerId":"0550f7dbccb2cb02bddbbc2f"}}}
+ Link to postman documentation:
+ 
+https://documenter.getpostman.com/view/16065705/2sAXqy1djb
